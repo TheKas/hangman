@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Hangman {
-  // https://en.wikipedia.org/wiki/Hangman_(game)
+  // https://en.wikipedia.org/wiki/Hangman_(game) (e-t-a-o-i-n-s-h-r-d-l-u)
   // Lives: 0 0 0
   // Input x
   // word .ell.
@@ -19,8 +19,8 @@ public class Hangman {
     Scanner textScanner = new Scanner(dictionary);
     ArrayList<String> words = new ArrayList<>();
 
-    while (textScanner.hasNext()){
-            words.add(textScanner.nextLine());
+    while (textScanner.hasNext()) {
+      words.add(textScanner.nextLine());
     }
 
     String randomWord = words.get((int) (Math.random() * words.size()));
@@ -53,8 +53,12 @@ public class Hangman {
         if (l == letter) {
           letters[i] = l;
           isGuessCorrect = true;
+          }
+        if (l == Character.toUpperCase(letter)){
+          letters[i] = Character.toUpperCase(l);
+          isGuessCorrect = true;
+          }
         }
-      }
 
       if (!isGuessCorrect) {
         lives = lives - 1;
@@ -83,7 +87,7 @@ public class Hangman {
       }
     }
     if (lives == 0) {
-      System.out.println("You lost! The word was " + randomWord);
+      System.out.println("You lost! The word was: " + randomWord);
       System.out.println("Exiting game");
     }
   }
